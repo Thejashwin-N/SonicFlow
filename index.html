@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundPulse Studio Pro - Advanced Equalizer</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- TOP BODY SECTION -->
+    <div class="app-body">
+      
+      <!-- 1. TIMER SIDEBAR -->
+      <aside class="sidebar-timer">
+        <span class="timer-label">Timer</span>
+
+        <div class="preset-buttons">
+          <button class="preset-btn" data-mins="5">5m</button>
+          <button class="preset-btn" data-mins="15">15m</button>
+          <button class="preset-btn" data-mins="25">25m</button>
+        </div>
+        
+        <div id="vertical-timer" class="vertical-timer">
+          <span id="timer-mins">00</span>
+          <span class="timer-colon">:</span>
+          <span id="timer-secs">00</span>
+        </div>
+
+        <div class="timer-actions">
+          <button id="start-timer-btn" class="timer-btn">Start</button>
+          <button id="reset-timer-btn" class="timer-btn secondary">Reset</button>
+        </div>
+      </aside>
+
+      <!-- 2. ENHANCEMENTS SIDEBAR -->
+      <section class="enhancements-container">
+        <span class="container-title">Audio Enhancements</span>
+
+        <div class="enhancement-card">
+          <label class="toggle-row">
+            <input type="checkbox" id="sleep-mode-toggle" checked>
+            <span>Sleep Mode</span>
+          </label>
+
+          <label class="toggle-row">
+            <input type="checkbox" id="fade-out-toggle" checked>
+            <span>Smooth 5s Fade</span>
+          </label>
+        </div>
+
+        <div class="enhancement-card">
+          <span class="card-subtitle">Visualizer</span>
+          <div class="visualizer-bars" id="sidebar-visualizer">
+            <span class="v-bar"></span>
+            <span class="v-bar"></span>
+            <span class="v-bar"></span>
+            <span class="v-bar"></span>
+            <span class="v-bar"></span>
+            <span class="v-bar"></span>
+          </div>
+        </div>
+
+        <div class="enhancement-card track-preview-card">
+          <img id="sidebar-art" src="https://picsum.photos/100?random=1" alt="Album Cover">
+          <div class="track-meta">
+            <h5 id="sidebar-track-title">Electric Dreams</h5>
+            <p id="sidebar-track-artist">SoundPulse</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 4. ANALOG CLOCK CONTAINER -->
+      <section class="clock-container">
+        <span class="container-title">Clock</span>
+        
+        <div class="analog-clock">
+          <div class="hand hour" id="clock-hour"></div>
+          <div class="hand minute" id="clock-minute"></div>
+          <div class="hand second" id="clock-second"></div>
+          <div class="clock-center-dot"></div>
+        </div>
+
+        <div id="digital-clock-display" class="digital-time-display">00:00:00</div>
+      </section>
+
+      <!-- 3. ADVANCED 10-BAND PARAMETRIC EQUALIZER & CONTROLS -->
+      <section class="controls-theme-container">
+        <span class="container-title">Controls & Themes</span>
+
+        <!-- Volume Adjuster & Mute -->
+        <div class="control-card">
+          <span class="card-subtitle">Volume</span>
+          <div class="volume-slider-box">
+            <span id="volume-icon">🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.8">
+            <span id="volume-value">80%</span>
+          </div>
+          <button id="mute-btn" class="action-btn">🔊 Mute</button>
+        </div>
+
+        <!-- Color Theme Switcher -->
+        <div class="control-card">
+          <span class="card-subtitle">Color Theme</span>
+          <div class="theme-options">
+            <button class="theme-btn active" data-theme="dark" style="--btn-color: #22c55e;">
+              <span class="theme-dot"></span> Dark
+            </button>
+            <button class="theme-btn" data-theme="neon" style="--btn-color: #06b6d4;">
+              <span class="theme-dot"></span> Cyber
+            </button>
+            <button class="theme-btn" data-theme="emerald" style="--btn-color: #10b981;">
+              <span class="theme-dot"></span> Emerald
+            </button>
+            <button class="theme-btn" data-theme="sunset" style="--btn-color: #f59e0b;">
+              <span class="theme-dot"></span> Sunset
+            </button>
+          </div>
+        </div>
+
+        <!-- 10-Band Graphic Equalizer -->
+        <div class="control-card eq-card">
+          <span class="card-subtitle">10-Band Graphic Equalizer</span>
+          
+          <div class="eq-sliders-10band" id="eq-container">
+            <!-- Dynamically Populated via JS -->
+          </div>
+
+          <div class="eq-presets">
+            <button class="eq-preset-btn active" data-preset="flat">Flat</button>
+            <button class="eq-preset-btn" data-preset="bass">Bass</button>
+            <button class="eq-preset-btn" data-preset="vocal">Vocal</button>
+            <button class="eq-preset-btn" data-preset="treble">Treble</button>
+            <button class="eq-preset-btn" data-preset="electronic">Techno</button>
+          </div>
+
+          <!-- Parametric Quality Factor (Q) Control -->
+          <div class="parametric-controls">
+            <span class="card-subtitle">Parametric Tuning (Q-Factor)</span>
+            <div class="param-row">
+              <span>Bandwidth Sharpness (Q):</span>
+              <input type="range" id="eq-q-factor" min="0.5" max="10" step="0.5" value="1.8">
+              <span id="q-value">1.8</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      
+
+    </div>
+
+    <!-- FULL-WIDTH BOTTOM BAR -->
+    <footer class="bottom-bar">
+      <div class="bar-section libraries-section">
+        <h3>Libraries</h3>
+        <ul id="library-list" class="nav-list">
+          <li class="active" data-lib="0">❤️ Favorites</li>
+          <li data-lib="1">☕ Chill Beats</li>
+          <li data-lib="2">⚡ Workout Hits</li>
+        </ul>
+      </div>
+
+      <div class="bar-section songs-section">
+        <h3 id="library-title">Favorites</h3>
+        <ul id="playlist" class="playlist"></ul>
+      </div>
+
+      <div class="bar-section player-section">
+        <div class="now-playing-box">
+          <img id="player-art" src="https://picsum.photos/100?random=1" alt="Art" class="player-thumb">
+          <div class="now-playing">
+            <h4 id="title">Select a track</h4>
+            <p id="artist">Artist</p>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="prev">‹</button>
+          <button id="play" class="play-btn">▶</button>
+          <button id="next">›</button>
+        </div>
+
+        <div class="timeline">
+          <span id="current">0:00</span>
+          <input type="range" id="progress" value="0" min="0" max="100">
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <audio id="audio" crossorigin="anonymous"></audio>
+    </footer>
+
+  </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
