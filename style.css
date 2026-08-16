@@ -1,0 +1,730 @@
+    /* ----------------------------------
+       COLOR THEME DEFINITIONS & VARS
+    ---------------------------------- */
+    :root {
+      --bg-color: #0a0a0a;
+      --panel-bg: #111111;
+      --card-bg: #141414;
+      --border-color: #222222;
+      --accent-color: #22c55e;
+      --text-primary: #ffffff;
+      --text-secondary: #888888;
+      --text-muted: #555555;
+      --hover-bg: #1e1e1e;
+    }
+
+    [data-theme="neon"] {
+      --bg-color: #050b14;
+      --panel-bg: #091428;
+      --card-bg: #0f1e38;
+      --border-color: #1a3054;
+      --accent-color: #06b6d4;
+      --text-primary: #e0f2fe;
+      --text-secondary: #7dd3fc;
+      --text-muted: #0284c7;
+      --hover-bg: #162e52;
+    }
+
+    [data-theme="emerald"] {
+      --bg-color: #021a12;
+      --panel-bg: #04291d;
+      --card-bg: #073828;
+      --border-color: #0e4d38;
+      --accent-color: #10b981;
+      --text-primary: #ecfdf5;
+      --text-secondary: #6ee7b7;
+      --text-muted: #047857;
+      --hover-bg: #0f523c;
+    }
+
+    [data-theme="sunset"] {
+      --bg-color: #1a0c02;
+      --panel-bg: #291405;
+      --card-bg: #3d1c06;
+      --border-color: #542708;
+      --accent-color: #f59e0b;
+      --text-primary: #fffbeb;
+      --text-secondary: #fcd34d;
+      --text-muted: #b45309;
+      --hover-bg: #5a2e0a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-primary);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .app-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* ----------------------------------
+       1. TIMER SIDEBAR
+    ---------------------------------- */
+    .sidebar-timer {
+      width: 210px;
+      height: 100%;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .timer-label, .container-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .preset-buttons {
+      display: flex;
+      gap: 3px;
+      width: 100%;
+    }
+
+    .preset-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.62rem;
+      padding: 4px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      flex: 1;
+      text-align: center;
+    }
+
+    .preset-btn:hover {
+      background: var(--hover-bg);
+      color: var(--text-primary);
+    }
+
+    .vertical-timer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 8px;
+      gap: 2px;
+      width: 100%;
+    }
+
+    .timer-colon {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .timer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .timer-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 0.7rem;
+      padding: 6px 0;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .timer-btn:hover {
+      background: var(--hover-bg);
+    }
+
+    .timer-btn.secondary {
+      color: var(--text-muted);
+    }
+
+    /* ----------------------------------
+       2. ENHANCEMENTS SIDEBAR
+    ---------------------------------- */
+    .enhancements-container {
+      width: 280px;
+      height: 100%;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 16px 12px;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .enhancement-card, .control-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-subtitle {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .toggle-row input {
+      accent-color: var(--accent-color);
+    }
+
+    .visualizer-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 28px;
+      padding: 2px 4px;
+    }
+
+    .v-bar {
+      width: 4px;
+      height: 20%;
+      background: var(--border-color);
+      border-radius: 2px;
+      transition: height 0.15s ease;
+    }
+
+    .visualizer-bars.playing .v-bar {
+      background: var(--accent-color);
+      animation: bounce 0.6s infinite alternate ease-in-out;
+    }
+
+    .visualizer-bars.playing .v-bar:nth-child(1) { animation-delay: 0.1s; }
+    .visualizer-bars.playing .v-bar:nth-child(2) { animation-delay: 0.3s; }
+    .visualizer-bars.playing .v-bar:nth-child(3) { animation-delay: 0.2s; }
+    .visualizer-bars.playing .v-bar:nth-child(4) { animation-delay: 0.5s; }
+    .visualizer-bars.playing .v-bar:nth-child(5) { animation-delay: 0.4s; }
+    .visualizer-bars.playing .v-bar:nth-child(6) { animation-delay: 0.15s; }
+
+    @keyframes bounce {
+      0% { height: 15%; }
+      100% { height: 95%; }
+    }
+
+    .track-preview-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-preview-card img {
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .track-meta h5 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 90px;
+    }
+
+    .track-meta p {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+    }
+
+        /* ----------------------------------
+       3. ANALOG CLOCK CONTAINER 
+    ---------------------------------- */
+    .clock-container {
+      width: 580px;
+      height: 100%;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .analog-clock {
+      width: 210px;
+      height: 210px;
+      border: 3px solid var(--border-color);
+      border-radius: 50%;
+      position: relative;
+      background: var(--card-bg);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock-center-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      position: absolute;
+      z-index: 10;
+    }
+
+    .hand {
+      position: absolute;
+      bottom: 50%;
+      transform-origin: bottom center;
+      border-radius: 4px;
+      transition: transform 0.05s cubic-bezier(0.4, 2.08, 0.55, 0.44);
+    }
+
+    .hand.hour {
+      width: 4px;
+      height: 30px;
+      background: var(--text-primary);
+      z-index: 3;
+    }
+
+    .hand.minute {
+      width: 3px;
+      height: 42px;
+      background: var(--text-secondary);
+      z-index: 2;
+    }
+
+    .hand.second {
+      width: 2px;
+      height: 48px;
+      background: var(--accent-color);
+      z-index: 1;
+    }
+
+    .digital-time-display {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+
+    /* ----------------------------------
+       4. EXPANDED EQUALIZER & CONTROLS PANEL
+    ---------------------------------- */
+    .controls-theme-container {
+      width: 360px;
+      height: 100%;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 16px 12px;
+      gap: 12px;
+      flex-shrink: 0;
+      overflow-y: auto;
+    }
+
+    .controls-theme-container::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .controls-theme-container::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 3px;
+    }
+
+    .volume-slider-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+    }
+
+    .volume-slider-box input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent-color);
+      cursor: pointer;
+    }
+
+    #volume-value {
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      width: 28px;
+      text-align: right;
+    }
+
+    .action-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 0.68rem;
+      padding: 5px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .action-btn:hover {
+      background: var(--hover-bg);
+    }
+
+    .theme-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .theme-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.65rem;
+      padding: 5px 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .theme-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--btn-color);
+    }
+
+    .theme-btn:hover, .theme-btn.active {
+      background: var(--hover-bg);
+      color: var(--text-primary);
+      border-color: var(--accent-color);
+    }
+
+    /* 10-Band Graphic Equalizer Styles */
+    .eq-card {
+      gap: 10px;
+    }
+
+    .eq-sliders-10band {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 2px;
+      height: 120px;
+      gap: 2px;
+    }
+
+    .eq-band {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      flex: 1;
+    }
+
+    .eq-slider {
+      -webkit-appearance: slider-vertical;
+      width: 100%;
+      height: 80px;
+      accent-color: var(--accent-color);
+      cursor: pointer;
+    }
+
+    .eq-label {
+      font-size: 0.55rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .eq-presets {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 3px;
+    }
+
+    .eq-preset-btn {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.58rem;
+      padding: 4px 0;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .eq-preset-btn:hover, .eq-preset-btn.active {
+      background: var(--hover-bg);
+      color: var(--text-primary);
+      border-color: var(--accent-color);
+    }
+
+    /* Parametric Quality (Q) Controls */
+    .parametric-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .param-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+    }
+
+    .param-row input[type="range"] {
+      width: 180px;
+      accent-color: var(--accent-color);
+    }
+
+
+    /* ----------------------------------
+       5. MAIN CONTENT
+    ---------------------------------- */
+    .page-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+
+    .page-content h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .page-content p {
+      color: var(--text-secondary);
+      max-width: 440px;
+      line-height: 1.5;
+    }
+
+    /* ----------------------------------
+       6. FULL-WIDTH BOTTOM BAR
+    ---------------------------------- */
+    .bottom-bar {
+      width: 100%;
+      background: var(--panel-bg);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      gap: 20px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .bar-section {
+      flex: 1;
+    }
+
+    h3 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .libraries-section {
+      border-right: 1px solid var(--border-color);
+      padding-right: 16px;
+      max-width: 180px;
+    }
+
+    .nav-list {
+      list-style: none;
+    }
+
+    .nav-list li {
+      padding: 6px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    .nav-list li:hover {
+      background: var(--hover-bg);
+      color: var(--text-primary);
+    }
+
+    .nav-list li.active {
+      background: var(--card-bg);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .songs-section {
+      border-right: 1px solid var(--border-color);
+      padding-right: 16px;
+      padding-left: 16px;
+      max-width: 260px;
+    }
+
+    .playlist {
+      list-style: none;
+      max-height: 105px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .playlist li {
+      padding: 6px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .playlist li:hover {
+      background: var(--hover-bg);
+      color: var(--text-primary);
+    }
+
+    .playlist li.active {
+      color: var(--accent-color);
+      background: var(--card-bg);
+      font-weight: 500;
+    }
+
+    .player-section {
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .now-playing-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-thumb {
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .now-playing {
+      text-align: left;
+    }
+
+    .now-playing h4 {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .now-playing p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .play-btn {
+      font-size: 0.85rem;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent-color);
+      cursor: pointer;
+    }
